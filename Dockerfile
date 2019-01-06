@@ -7,10 +7,13 @@ COPY . ./librdkafka
 RUN wget https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz -q
 RUN tar -xzf cmake-3.13.2.tar.gz
 RUN cd cmake-3.13.2
-RUN /bin/bash ./bootstrap
+RUN ["/bin/bash", "-c", "./bootstrap"]
 RUN gmake
 RUN make install
 RUN cd ..
+
+RUN apt-get install python3 python3-pip ninja-build
+RUN pip3 install --user meson
 
 RUN wget https://github.com/open-source-parsers/jsoncpp/archive/0.10.7.tar.gz
 RUN tar -xzf 0.10.7.tar.gz
