@@ -9,7 +9,7 @@ pipeline:
   #     - ./configure
   #     - make
   #     - make install
-  
+
   mpublish:
     image: plugins/docker
     repo: xiaoyaolang/librdkafka-printpoint
