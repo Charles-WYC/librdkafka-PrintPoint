@@ -12,7 +12,7 @@ pipeline:
 
   mpublish:
     image: plugins/docker
-    repo: xiaoyaolang/librdkafka-PrintPoint
+    repo: xiaoyaolang/librdkafka-printpoint
     tags: ["latest"]
     secrets: [ wyc_docker_username, wyc_docker_password ]
     dockerfile: Dockerfile
