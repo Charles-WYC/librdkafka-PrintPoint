@@ -4,8 +4,8 @@ WORKDIR /home
 
 COPY . ./librdkafka
 
-RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get update -y
+RUN apt-get upgrade -y
 RUN apt-get install build-essential
 RUN wget https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz -q
 RUN tar -xzf cmake-3.13.2.tar.gz
