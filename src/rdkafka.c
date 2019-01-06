@@ -34,6 +34,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <iostream>
 
 #include "rdkafka_int.h"
 #include "rdkafka_msg.h"

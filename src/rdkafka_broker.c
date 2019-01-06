@@ -45,6 +45,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>
+#include <iostream>
 
 #include "rd.h"
 #include "rdkafka_int.h"

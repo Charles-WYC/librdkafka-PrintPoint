@@ -26,6 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <iostream>
 #include "rdkafka_int.h"
 #include "rdkafka_broker.h"
 #include "rdkafka_request.h"
