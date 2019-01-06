@@ -1,0 +1,20 @@
+workspace:
+  base: /librdkafka
+  path: src/github.com/Charles-WYC/librdkafka
+
+pipeline:
+  build:
+    image: gcc
+    commands:
+      - ./configure
+      - make
+      - make install
+
+  mpublish:
+    image: plugins/docker
+    repo: xiaoyaolang/librdkafka-PrintPoint
+    tags: ["latest"]
+    secrets: [ wyc_docker_username, wyc_docker_password ]
+    dockerfile: Dockerfile
+    when:
+      branch: master
