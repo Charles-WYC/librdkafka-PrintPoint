@@ -28,6 +28,7 @@
 
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 #include "rdkafkacpp_int.h"
 
