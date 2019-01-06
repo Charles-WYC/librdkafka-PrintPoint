@@ -3733,6 +3733,11 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 					rd_kafka_secproto_t proto,
 					const char *name, uint16_t port,
 					int32_t nodeid) {
+        std::cout<<"begin rd_kafka_broker_add"<<std::endl;
+        std::cout<<"nodename:"<<name<<std::endl;
+        std::cout<<"port:"<<port<<std::endl;
+        std::cout<<"nodeid:"<<nodeid<<std::endl;
+        sleep(60);
 	rd_kafka_broker_t *rkb;
         int r;
 #ifndef _MSC_VER
@@ -3854,6 +3859,8 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 	 * the broker thread until we've finalized the rkb. */
 	rd_kafka_broker_lock(rkb);
         rd_kafka_broker_keep(rkb); /* broker thread's refcnt */
+        std::cout<<"before create broker thread"<<std::endl;
+        sleep(60);
 	if (thrd_create(&rkb->rkb_thread,
 			rd_kafka_broker_thread_main, rkb) != thrd_success) {
 		char tmp[512];
@@ -3877,6 +3884,8 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 
 		return NULL;
 	}
+        std::cout<<"after create broker thread"<<std::endl;
+        sleep(60);
 
         if (rkb->rkb_source != RD_KAFKA_INTERNAL) {
                 if (rk->rk_conf.security_protocol ==
@@ -3905,6 +3914,8 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 	pthread_sigmask(SIG_SETMASK, &oldset, NULL);
 #endif
 
+        std::cout<<"end rd_kafka_broker_add"<<std::endl;
+        sleep(60);
 	return rkb;
 }
 
@@ -4091,6 +4102,8 @@ static int rd_kafka_broker_name_parse (rd_kafka_t *rk,
  * Lock prereqs: none
  */
 int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
+        std::cout<<"begin rd_kafka_brokers_add0"<<std::endl;
+        sleep(60);
 	char *s_copy = rd_strdup(brokerlist);
 	char *s = s_copy;
 	int cnt = 0;
@@ -4115,6 +4128,8 @@ int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
 
 		if ((rkb = rd_kafka_broker_find(rk, proto, host, port)) &&
 		    rkb->rkb_source == RD_KAFKA_CONFIGURED) {
+                        std::cout<<"broker_find"<<std::endl;
+                        sleep(60);
 			cnt++;
 		} else if (rd_kafka_broker_add(rk, RD_KAFKA_CONFIGURED,
 					       proto, host, port,
@@ -4132,6 +4147,8 @@ int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
 
 	rd_free(s_copy);
 
+        std::cout<<"end rd_kafka_brokers_add0"<<std::endl;
+        sleep(60);
 	return cnt;
 }
 

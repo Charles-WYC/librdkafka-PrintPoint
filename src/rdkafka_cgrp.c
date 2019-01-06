@@ -174,6 +174,9 @@ void rd_kafka_cgrp_destroy_final (rd_kafka_cgrp_t *rkcg) {
 rd_kafka_cgrp_t *rd_kafka_cgrp_new (rd_kafka_t *rk,
                                     const rd_kafkap_str_t *group_id,
                                     const rd_kafkap_str_t *client_id) {
+                                            
+        std::cout<<"begin rd_kafka_cgrp_new"<<std::endl;
+        sleep(60);
         rd_kafka_cgrp_t *rkcg;
 
         rkcg = rd_calloc(1, sizeof(*rkcg));
