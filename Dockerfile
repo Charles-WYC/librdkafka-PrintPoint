@@ -4,8 +4,8 @@ WORKDIR /home
 
 COPY . ./librdkafka
 
-RUN wget https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz
-RUN tar xzvf cmake-3.13.2.tar.gz
+RUN wget https://cmake.org/files/v3.13/cmake-3.13.2.tar.gz > /dev/null
+RUN tar -xzf cmake-3.13.2.tar.gz
 RUN cd cmake-3.13.2
 RUN ./bootstrap
 RUN gmake
