@@ -3,13 +3,13 @@ workspace:
   path: src/github.com/Charles-WYC/librdkafka
 
 pipeline:
-  build:
-    image: gcc
-    commands:
-      - ./configure
-      - make
-      - make install
-
+  # build:
+  #   image: gcc
+  #   commands:
+  #     - ./configure
+  #     - make
+  #     - make install
+  
   mpublish:
     image: plugins/docker
     repo: xiaoyaolang/librdkafka-printpoint
