@@ -4126,7 +4126,7 @@ int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
 
 		if ((rkb = rd_kafka_broker_find(rk, proto, host, port)) &&
 		    rkb->rkb_source == RD_KAFKA_CONFIGURED) {
-                        std::cout<<"broker_find"<<std::endl;
+                        printf("broker_find\n");
                         sleep(60);
 			cnt++;
 		} else if (rd_kafka_broker_add(rk, RD_KAFKA_CONFIGURED,
