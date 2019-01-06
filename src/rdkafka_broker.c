@@ -45,7 +45,6 @@
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>
-#include <iostream>
 
 #include "rd.h"
 #include "rdkafka_int.h"
@@ -3734,10 +3733,8 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 					rd_kafka_secproto_t proto,
 					const char *name, uint16_t port,
 					int32_t nodeid) {
-        std::cout<<"begin rd_kafka_broker_add"<<std::endl;
-        std::cout<<"nodename:"<<name<<std::endl;
-        std::cout<<"port:"<<port<<std::endl;
-        std::cout<<"nodeid:"<<nodeid<<std::endl;
+        printf("begin rd_kafka_broker_add\n");
+        printf("nodename:%p\nport:%d\nnodeid:%d\n", name, port, nodeid);
         sleep(60);
 	rd_kafka_broker_t *rkb;
         int r;
@@ -3860,7 +3857,7 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 	 * the broker thread until we've finalized the rkb. */
 	rd_kafka_broker_lock(rkb);
         rd_kafka_broker_keep(rkb); /* broker thread's refcnt */
-        std::cout<<"before create broker thread"<<std::endl;
+        printf("before create broker thread\n");
         sleep(60);
 	if (thrd_create(&rkb->rkb_thread,
 			rd_kafka_broker_thread_main, rkb) != thrd_success) {
@@ -3885,7 +3882,7 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 
 		return NULL;
 	}
-        std::cout<<"after create broker thread"<<std::endl;
+        printf("after create broker thread\n");
         sleep(60);
 
         if (rkb->rkb_source != RD_KAFKA_INTERNAL) {
@@ -3915,7 +3912,7 @@ rd_kafka_broker_t *rd_kafka_broker_add (rd_kafka_t *rk,
 	pthread_sigmask(SIG_SETMASK, &oldset, NULL);
 #endif
 
-        std::cout<<"end rd_kafka_broker_add"<<std::endl;
+        printf("end rd_kafka_broker_add\n");
         sleep(60);
 	return rkb;
 }
@@ -4103,7 +4100,7 @@ static int rd_kafka_broker_name_parse (rd_kafka_t *rk,
  * Lock prereqs: none
  */
 int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
-        std::cout<<"begin rd_kafka_brokers_add0"<<std::endl;
+        printf("begin rd_kafka_brokers_add0\n");
         sleep(60);
 	char *s_copy = rd_strdup(brokerlist);
 	char *s = s_copy;
@@ -4148,7 +4145,7 @@ int rd_kafka_brokers_add0 (rd_kafka_t *rk, const char *brokerlist) {
 
 	rd_free(s_copy);
 
-        std::cout<<"end rd_kafka_brokers_add0"<<std::endl;
+        printf("end rd_kafka_brokers_add0\n");
         sleep(60);
 	return cnt;
 }

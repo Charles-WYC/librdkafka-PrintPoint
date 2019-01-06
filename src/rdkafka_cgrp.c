@@ -26,7 +26,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <iostream>
 #include "rdkafka_int.h"
 #include "rdkafka_broker.h"
 #include "rdkafka_request.h"
@@ -176,7 +175,7 @@ rd_kafka_cgrp_t *rd_kafka_cgrp_new (rd_kafka_t *rk,
                                     const rd_kafkap_str_t *group_id,
                                     const rd_kafkap_str_t *client_id) {
                                             
-        std::cout<<"begin rd_kafka_cgrp_new"<<std::endl;
+        printf("begin rd_kafka_cgrp_new\n");
         sleep(60);
         rd_kafka_cgrp_t *rkcg;
 
@@ -223,6 +222,8 @@ rd_kafka_cgrp_t *rd_kafka_cgrp_new (rd_kafka_t *rk,
 				     auto_commit_interval_ms * 1000ll,
                                      rd_kafka_cgrp_offset_commit_tmr_cb,
                                      rkcg);
+        printf("begin rd_kafka_cgrp_new\n");
+        sleep(60);
 
         return rkcg;
 }
