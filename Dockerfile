@@ -17,8 +17,8 @@ RUN make install
 WORKDIR /home
 # RUN cd ..
 
-RUN apt-get install python3 python3-pip ninja-build
-RUN pip3 install --user meson
+RUN apt-get install python3 python3-pip ninja-build -y
+RUN pip3 install --user meson -y
 
 RUN wget https://github.com/open-source-parsers/jsoncpp/archive/0.10.7.tar.gz
 RUN tar -xzf 0.10.7.tar.gz
