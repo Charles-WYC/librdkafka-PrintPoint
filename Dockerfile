@@ -36,10 +36,10 @@ RUN source /etc/profile
 # RUN cd ../../..
 
 # RUN cd librdkafka
-WORKDIR /home/librdkafka
-RUN ./configure
-RUN make
-RUN make install
+# WORKDIR /home/librdkafka
+# RUN ./configure
+# RUN make
+# RUN make install
 # RUN cd ..
 WORKDIR /home
 RUN rm -rf *
