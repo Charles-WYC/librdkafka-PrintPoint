@@ -32,7 +32,7 @@ RUN make
 RUN make install
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64
 ENV LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib64
-RUN source /etc/profile
+# RUN source /etc/profile
 # RUN cd ../../..
 
 # RUN cd librdkafka
