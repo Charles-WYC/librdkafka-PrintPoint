@@ -41,5 +41,6 @@ ENV LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib64
 # RUN make
 # RUN make install
 # RUN cd ..
+
 WORKDIR /home
 RUN rm -rf *
