@@ -30,9 +30,7 @@ WORKDIR /home/jsoncpp-0.10.7/build/debug
 RUN cmake -DCMAKE_BUILD_TYPE=release -DBUILD_STATIC_LIBS=OFF -DBUILD_SHARED_LIBS=ON -DARCHIVE_INSTALL_DIR=. -DCMAKE_INSTALL_INCLUDEDIR=include -G "Unix Makefiles" ../..
 RUN make
 RUN make install
-RUN ls /usr/local/lib/x86_64-linux-gnu
-RUN ls /usr/local/lib64
-RUN find / -name libjsoncpp.so
+RUN cp /usr/local/lib/x86_64-linux-gnu/* /usr/lib/ -f
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/x86_64-linux-gnu
 ENV LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/x86_64-linux-gnu
 # RUN source /etc/profile
